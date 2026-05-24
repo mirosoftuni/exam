@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeadPredictor Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+                    </svg>
+                </div>
+                <h2><span>Lead</span>Predictor</h2>
+            </div>
+
+            <!-- Form Groups -->
+            <div class="form-group">
+                <label>Language</label>
+                <select class="custom-select">
+                    <option>🇺🇸 English</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Currency</label>
+                <select class="custom-select">
+                    <option>$ US Dollar</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Campaign Start</label>
+                <div class="date-input">
+                    <input type="text" value="08-May-2026" readonly>
+                    <svg class="calendar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Campaign End</label>
+                <div class="date-input">
+                    <input type="text" value="04-Nov-2026" readonly>
+                    <svg class="calendar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Total Revenue</label>
+                <div class="prefix-input">
+                    <span>$</span>
+                    <input type="number" id="total-revenue" value="10000">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Avg. Order Value</label>
+                <div class="prefix-input">
+                    <span>$</span>
+                    <input type="number" id="avg-order-value" value="1000">
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Dashboard -->
+        <main class="dashboard">
+            <div class="top-section">
+                <!-- Chart Area -->
+                <div class="chart-panel panel">
+                    <div class="chart-wrapper">
+                        <div class="y-axis">
+                            <span class="axis-title">Months</span>
+                            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span>
+                        </div>
+                        <div class="chart-area" id="chart-area">
+                            <!-- Bars rendered by JS -->
+                            
+                            <!-- X Axis -->
+                            <div class="x-axis" id="x-axis-labels">
+                                <!-- Labels rendered by JS -->
+                            </div>
+                            
+                            <!-- Vertical Grid Lines rendered by JS -->
+                            <div class="grid-lines" id="grid-lines"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tooltip -->
+                    <div class="tooltip" id="chart-tooltip">
+                        <div class="tt-title" id="tt-month">Month #3</div>
+                        <div id="tt-stats"></div>
+                    </div>
+                </div>
+
+                <!-- Summary Cards -->
+                <div class="cards-panel">
+                    <div class="card panel">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                                Prospects
+                            </div>
+                            <div class="card-percent">100%</div>
+                        </div>
+                        <div class="card-value" id="val-prospects">125</div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 100%;"></div></div>
+                    </div>
+                    
+                    <div class="card panel">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                                Leads
+                            </div>
+                            <div class="card-percent" id="pct-leads">20%</div>
+                        </div>
+                        <div class="card-value" id="val-leads">25</div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 20%;" id="fill-leads"></div></div>
+                    </div>
+                    
+                    <div class="card panel">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 9l3 3-3 3"></path><path d="M12 9l3 3-3 3"></path><circle cx="12" cy="12" r="10"></circle></svg>
+                                Customers
+                            </div>
+                            <div class="card-percent" id="pct-customers">8%</div>
+                        </div>
+                        <div class="card-value" id="val-customers">10</div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 8%;" id="fill-customers"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Section (Sliders) -->
+            <div class="bottom-section panel">
+                <div class="slider-group">
+                    <div class="slider-header">
+                        <label>Lead Response Rate</label>
+                    </div>
+                    <div class="slider-wrapper">
+                        <input type="range" id="lrr-slider" min="1" max="100" value="40" step="1">
+                        <div class="slider-track" id="lrr-track"></div>
+                    </div>
+                    <div class="slider-val-right" id="val-lrr">40.00%</div>
+                </div>
+
+                <div class="slider-group">
+                    <div class="slider-header">
+                        <label>Prospect Response Rate</label>
+                    </div>
+                    <div class="slider-wrapper">
+                        <input type="range" id="prr-slider" min="1" max="100" value="20" step="1">
+                        <div class="slider-track" id="prr-track"></div>
+                    </div>
+                    <div class="slider-val-right" id="val-prr">20.00%</div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
