@@ -428,5 +428,5 @@ body {
     text-align: right;
     font-size: 0.8rem;
     color: var(--text-primary);
-    margin-top: -20px; /* Align to right line */
+    margin-top: 5px;
 }
